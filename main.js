@@ -62,14 +62,26 @@
 // }
 // person.sayMyName()
 // const name = 'super man'
-globalThis.name = 'superman'
-function sayMyName(){
-        console.log(`My name is ${this.name}`)
-    }
+// globalThis.name = 'superman'
+// function sayMyName(){
+//         console.log(`My name is ${this.name}`)
+//     }
 // 
-function person(name){
-    // this is {}
-    this.name = name
-}
+// function person(name){
+//     this is {}
+//     this.name = name
+// }
 // const p1 = new person('avinash')
 // console.log(p1.name)
+// Prototype
+function person(fname, lname) {
+    this.firstname = fname
+    this.lastname = lname
+}
+const person1 = new person('bruce','node')
+const person2 = new person('avi','nash')
+person.prototype.getFullName = function () {
+    return this.firstname + this.lastname
+}
+console.log(person1.getFullName())
+console.log(person2.getFullName())
