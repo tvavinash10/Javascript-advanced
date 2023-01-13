@@ -78,10 +78,21 @@ function person(fname, lname) {
     this.firstname = fname
     this.lastname = lname
 }
-const person1 = new person('bruce','node')
-const person2 = new person('avi','nash')
 person.prototype.getFullName = function () {
     return this.firstname + this.lastname
 }
-console.log(person1.getFullName())
-console.log(person2.getFullName())
+// const person1 = new person('bruce','node')
+// const person2 = new person('avi','nash')
+// console.log(person1.getFullName())
+// console.log(person2.getFullName())
+function superhero(fname, lname){
+    person.call(this, fname, lname)
+    this.issuperhero = true
+}
+superhero.prototype.fightcrime = function(){
+    console.log('fighting crime')
+}
+superhero.prototype = Object.create(person.prototype)
+const batman = new superhero('bruce','wayne')
+console.log(batman.getFullName())
+// superhero.prototype.constructor = superhero
