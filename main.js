@@ -74,25 +74,48 @@
 // const p1 = new person('avinash')
 // console.log(p1.name)
 // Prototype
-function person(fname, lname) {
-    this.firstname = fname
-    this.lastname = lname
-}
-person.prototype.getFullName = function () {
-    return this.firstname + this.lastname
-}
+// function person(fname, lname) {
+//     this.firstname = fname
+//     this.lastname = lname
+// }
+// person.prototype.getFullName = function () {
+//     return this.firstname + this.lastname
+// }
 // const person1 = new person('bruce','node')
 // const person2 = new person('avi','nash')
 // console.log(person1.getFullName())
 // console.log(person2.getFullName())
-function superhero(fname, lname){
-    person.call(this, fname, lname)
-    this.issuperhero = true
-}
-superhero.prototype.fightcrime = function(){
-    console.log('fighting crime')
-}
-superhero.prototype = Object.create(person.prototype)
-const batman = new superhero('bruce','wayne')
-console.log(batman.getFullName())
+// function superhero(fname, lname){
+//     person.call(this, fname, lname)
+//     this.issuperhero = true
+// }
+// superhero.prototype.fightcrime = function(){
+//     console.log('fighting crime')
+// }
+// superhero.prototype = Object.create(person.prototype)
+// const batman = new superhero('bruce','wayne')
+// console.log(batman.getFullName())
 // superhero.prototype.constructor = superhero
+// class
+class Person{
+    constructor(fName, lName){
+        this.firstName = fName
+        this.lastName = lName
+    }
+    sayMyName(){
+        return this.firstName + ' ' + this.lastName
+    }
+}
+const classP1 = new Person('Avinash', 'TV')
+console.log(classP1.sayMyName())
+class SuperHero extends Person{
+    constructor(fName, lName){
+        super(fName, lName)
+        this.isSuperHero = true
+    }
+    fightCrime(){
+        console.log('Fighting Crime')
+    }
+}
+const batman = new SuperHero('Avi', 'TV')
+console.log(batman.sayMyName())
